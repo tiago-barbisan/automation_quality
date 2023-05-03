@@ -1,5 +1,7 @@
 import {Before, Given, When, And, Then} from "cypress-cucumber-preprocessor/steps"
 
+import Signup from "../Signup";
+
 Given("I access google page", () => {
     cy.visit("https://www.google.com.br/");
 })
@@ -39,4 +41,21 @@ And('user fill username and password field and click submit',()=>{
 
 Then('error message show display',()=>{
     cy.get('.login-form > form > p').should('have.text','Your email or password is incorrect!')
+})
+
+
+Given('i access signup page',()=>{
+    cy.visit('https://automationexercise.com/login')
+})
+
+When('i access registration page',()=>{
+   
+    Signup.accessRegistrationPage()
+    
+})
+
+And('fill in all the fields',()=>{
+  
+    Signup.fillAllInputsAccount()
+
 })
